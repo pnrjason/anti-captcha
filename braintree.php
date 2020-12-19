@@ -230,12 +230,9 @@ elseif(strpos($execute, 'Gateway Rejected: avs')){
 elseif(strpos($execute, 'Status code')){ 
     
     echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">'.$respo.'</span></td></tr><br>'; 
-    
 }
 else { 
-    
-	echo '<tr><td><span class="badge badge-outline-warning badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-warning badge-pill">Error Not Listed</span></td></tr><br>';
-    
+    echo '<tr><td><span class="badge badge-outline-warning badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-warning badge-pill">Error Not Listed</span></td></tr><br>';
 }
 unlink("cookie.txt");
 ?>
