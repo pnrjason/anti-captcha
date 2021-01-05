@@ -31,7 +31,7 @@ $cc = $separator[0];
 $mm = $separator[1]; 
 $yy = $separator[2]; 
 $cvv = $separator[3]; 
-$postcode = mt_rand(10080, 94545);
+$postcode = mt_rand(10080, 94545); 
 $str = RandomString();
 $username = RandomString().mt_rand(1, 999);
 
