@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 
-//Script by pnrjason (t.me/Raizo666)
+//Script by pnrjason (t.me/AurumSora)
  
 if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
     extract($_POST); 
