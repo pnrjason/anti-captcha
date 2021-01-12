@@ -26,20 +26,7 @@
     $yy = $separator[2];
     $y = substr($yy, 2,4);
     $cvv = $separator[3];
-    $postcode = mt_rand(10080, 94545);
-    $str = RandomString();
     $username = RandomString().mt_rand(1, 999);
-
-    $cbin = substr($cc, 0,1);
-    if($cbin == 5) {
-        $cbin = 'master-card';
-    } else if($cbin == 4) {
-        $cbin = 'visa';
-    } else if($cbin == 3) {
-        $cbin = 'amex';
-    } else {
-        $cbin = 'null';
-    }
 
     $ch = curl_init();
     curl_setopt_array($ch, array(
