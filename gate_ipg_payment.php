@@ -183,7 +183,7 @@
 
     $status = GetStr(GetStr($bolbol, 'name="fail_reason">', 'name="status">'), 'value="', '"');
     $response = GetStr(GetStr($bolbol, 'name="email">', 'name="approval_code">'), 'value="', '"');
-
+ 
     if(strpos($bolbol, 'APPROVED')) {
 
         echo '<tr><td><span class="badge badge-success badge-pill">LIVE</span></td><td><span> => </span></td><td><span class="badge badge-dark badge-pill">'.$lista.'</span></td> <td><span class="badge badge-success badge-pill">APPROVED</span></td></tr><br>';
