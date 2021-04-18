@@ -14,7 +14,7 @@ class CustomCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "forms"             =>  $this->forms
         );
     }
-    
+   
     public function getTaskSolution() {
         return $this->taskInfo->solution->answers;
     }
