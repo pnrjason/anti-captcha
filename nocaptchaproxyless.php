@@ -18,7 +18,7 @@ class NoCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol 
     public function getTaskSolution() {
         return $this->taskInfo->solution->gRecaptchaResponse;
     }
-    
+     
     public function setWebsiteURL($value) {
         $this->websiteUrl = $value;
     }
