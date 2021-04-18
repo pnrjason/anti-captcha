@@ -12,7 +12,7 @@ class HCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol {
             "websiteKey"    =>  $this->websiteKey
         );
     }
-    
+     
     public function setTaskInfo($taskInfo) {
         $this->taskInfo = $taskInfo;
     }
