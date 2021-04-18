@@ -31,7 +31,7 @@ function RandomString($length = 5)
  
 $separator = explode("|", $lista);  
 $cc = $separator[0]; 
-$mm = $separator[1]; 
+$mm = $separator[1];
 $yy = $separator[2]; 
 $cvv = $separator[3];
 
