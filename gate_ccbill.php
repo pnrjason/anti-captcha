@@ -30,7 +30,7 @@
         $mm = $separator[1];
         $yy = $separator[2];
         $cvv = $separator[3];
-
+        
         $ch = curl_init();
         curl_setopt_array($ch, array(
             CURLOPT_URL => 'https://pay.ccbill.com/paymentMethods',
