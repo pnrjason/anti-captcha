@@ -18,7 +18,6 @@
         }
         return $randomString;
     }
-
     extract($_GET);
     $separator = explode("|", $lista);
     $cc = $separator[0];
