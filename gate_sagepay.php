@@ -34,7 +34,7 @@
     $data = json_decode($randomShits, true);
     $fname = explode(" ", $data['name'])[0];
     $lname = explode(" ", $data['name'])[1];
-    $email = $data['email']['address'];
+    $email = $data['email']['address']; 
     $street = $data['street1'];
     $city = preg_split("/[\s,]+/", $data['street2'])[0];
     $state = preg_split("/[\s,]+/", $data['street2'])[1];
