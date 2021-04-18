@@ -35,7 +35,7 @@
     $city = $data['results'][0]['location']['city'];
     $state = preg_replace('/[^A-Z]/', '', $data['results'][0]['location']['state']);
     $postcode = $data['results'][0]['location']['postcode'];
-    $phone = $data['results'][0]['phone'];
+    $phone = $data['results'][0]['phone']; 
     $username = $data['results'][0]['login']['username'];
 
     $ch = curl_init();
