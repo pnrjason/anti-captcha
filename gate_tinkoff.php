@@ -26,7 +26,7 @@
     $yy = $separator[2];
     $cvv = $separator[3];
     $cookie = RandomString();
-
+ 
     $ch = curl_init();
     curl_setopt_array($ch, array(
         CURLOPT_URL => 'https://api.melonity.gg/au1h',
