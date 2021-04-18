@@ -7,7 +7,7 @@ class SquareCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $rowsCount      =   3;
     private $columnsCount   =   3;
     
-    
+     
     public function getPostData() {
         return array(
             "type"          =>  "SquareNetTask",
