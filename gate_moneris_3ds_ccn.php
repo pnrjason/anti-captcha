@@ -39,7 +39,7 @@
     $city = preg_split("/[\s,]+/", $data['street2'])[0];
     $state = preg_split("/[\s,]+/", $data['street2'])[1];
     $phone = str_replace("-", "", $data['phone']);
-
+ 
     $ch = curl_init();
     curl_setopt_array($ch, array(
         CURLOPT_URL => 'https://www.circamax.com/?',
