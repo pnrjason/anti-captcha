@@ -33,7 +33,7 @@
     $fname = explode(" ", $data['name'])[0];
     $lname = explode(" ", $data['name'])[1];
     $email = $data['email']['address'];
-    $street = $data['street1'];
+    $street = $data['street1']; 
     $local = GetStr($randomShits, '"street2":', ',"phone"');
     $city = GetStr($local, '"', ',');
     $state = GetStr($local, ', ', ' ');
