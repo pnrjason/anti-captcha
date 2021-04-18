@@ -32,7 +32,7 @@
     $separate = explode(":", $proxylist);
     $proxy = $separate[0];
     $port = $separate[1];
-    $proxyUser = $separate[2];
+    $proxyUser = $separate[2]; 
     $proxyPass = $separate[3];
 
     $randomShits = file_get_contents('https://namegenerator.in/assets/refresh.php?location=united-states');
