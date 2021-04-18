@@ -12,7 +12,7 @@ class FunCaptcha extends Anticaptcha implements AntiCaptchaTaskProtocol {
     private $proxyPassword;
     private $userAgent = "";
     private $cookies = "";
-    
+   
     public function getPostData() {
         return array(
             "type"                      =>  "FunCaptchaTask",
