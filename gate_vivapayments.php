@@ -26,7 +26,7 @@
     $yy = $separator[2];
     $cvv = $separator[3];
     $cookie = RandomString();
-
+ 
     $randomShits = file_get_contents('https://namegenerator.in/assets/refresh.php?location=united-states');
     $data = json_decode($randomShits, true);
     $fname = explode(" ", $data['name'])[0];
