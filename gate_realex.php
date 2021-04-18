@@ -176,7 +176,7 @@
     ));
     $auth = json_decode(curl_exec($ch), true);
     curl_close($ch);
-
+ 
     $code = $auth['data']['response']['result'];
     $authCode = $auth['data']['response']['authcode'];
     $message = $auth['data']['response']['message'];
