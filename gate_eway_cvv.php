@@ -35,7 +35,7 @@
     $street = $data['street1'];
     $local = GetStr($randomShits, '"street2":', ',"phone"');
     $city = GetStr($local, '"', ',');
-    $state = GetStr($local, ', ', ' ');
+    $state = GetStr($local, ', ', ' '); 
     $postcode = GetStr($local, $state." ", '"');
     $phone = str_replace("-", "", $data['phone']);
 
