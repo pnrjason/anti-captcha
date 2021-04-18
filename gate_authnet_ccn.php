@@ -30,7 +30,6 @@
 
     $randomShits = file_get_contents('https://namegenerator.in/assets/refresh.php?location=united-states');
     $data = json_decode($randomShits, true);
-
     $fname = explode(" ", $data['name'])[0];
     $lname = explode(" ", $data['name'])[1];
     $email = $data['email']['address'];
