@@ -73,7 +73,7 @@
     ));
     $getSomeHelp = curl_exec($ch);
     $checkoutNonce = GetStr($getSomeHelp, 'name="woocommerce-process-checkout-nonce" value="', '"');
-
+ 
     $ch = curl_init();
     curl_setopt_array($ch, array(
         CURLOPT_URL => 'https://medicareplus.co.uk/?wc-ajax=checkout',
