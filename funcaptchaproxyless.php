@@ -14,7 +14,7 @@ class FunCaptchaProxyless extends Anticaptcha implements AntiCaptchaTaskProtocol
             "websitePublicKey"          =>  $this->websitePublicKey
         );
     }
-    
+   
     public function setTaskInfo($taskInfo) {
         $this->taskInfo = $taskInfo;
     }
