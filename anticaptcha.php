@@ -16,8 +16,6 @@ class Anticaptcha {
     private $errorMessage;
     private $taskId;
     public $taskInfo;
-    
-    
    
     /**
      * Submit new task and receive tracking ID
